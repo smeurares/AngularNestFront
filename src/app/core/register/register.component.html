@@ -1,1 +1,57 @@
-<p>register works!</p>
+<!--// Register component template  //-->
+
+<div class="container">
+  <!--// Register form group //-->
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!--// Form title //-->
+    <h1 class="auth-title">Register</h1>
+
+    <!--// Name form control //-->
+    <div class="form-control-container">
+      <label class="auth-label" for="name">Name:</label>
+      <input
+        class="auth-input auth-text-input"
+        id="name"
+        type="text"
+        formControlName="name"
+      />
+    </div>
+
+    <!--// Email form control //-->
+    <div class="form-control-container">
+      <label class="auth-label" for="email">Email:</label>
+      <input
+        class="auth-input auth-text-input"
+        id="email"
+        type="text"
+        formControlName="email"
+      />
+    </div>
+
+    <!--// Password form control //-->
+    <div class="form-control-container">
+      <label for="password">Password:</label>
+      <input
+        class="auth-input auth-password-input"
+        id="password"
+        type="password"
+        formControlName="password"
+      />
+    </div>
+
+    <!--// Submit button //-->
+    <button
+      class="auth-button auth-submit-button"
+      type="submit"
+      [disabled]="!registerForm.valid"
+      nz-button
+      nzType="primary"
+    >
+      <i nz-icon nzType="user-add"></i>
+      Register
+    </button>
+  </form>
+</div>
+
+<!--// </END> Register component template //-->

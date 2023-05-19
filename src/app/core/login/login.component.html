@@ -1,1 +1,60 @@
-<p>login works!</p>
+<!--// Login component template  //-->
+
+<div class="container">
+  <!--// Login form group //-->
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!--// Form title //-->
+    <h1 class="auth-title">Login</h1>
+
+    <!--// Email form control //-->
+    <div class="form-control-container">
+      <label class="auth-label" for="email">Email:</label>
+      <input
+        class="auth-input auth-text-input"
+        id="email"
+        type="text"
+        formControlName="email"
+      />
+    </div>
+
+    <!--// Password form control //-->
+    <div class="form-control-container">
+      <label class="auth-label" for="password">Password:</label>
+      <input
+        class="auth-input auth-password-input"
+        id="password"
+        type="password"
+        formControlName="password"
+      />
+    </div>
+
+    <!--// Submit button //-->
+    <button
+      class="auth-button auth-submit-button"
+      type="submit"
+      [disabled]="!loginForm.valid"
+      nz-button
+      nzType="primary"
+    >
+      <i nz-icon nzType="login"></i>
+      Login
+    </button>
+
+    <!--// Line break //-->
+    <br />
+
+    <!--// Remember form control //-->
+    <div class="form-control-container">
+      <label for="remember-me">Remember me:</label>
+      <input
+        class="auth-input auth-chechbox-input"
+        id="remember-me"
+        type="checkbox"
+        formControlName="remember"
+      />
+    </div>
+  </form>
+</div>
+
+<!--// </END> Login component template //-->
