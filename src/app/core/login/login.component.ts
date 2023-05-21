@@ -25,9 +25,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate(['/auth/shop']);
-    }
   }
 
   onSubmit() {
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.loginForm.value).subscribe(
         (result) => {
           console.log(result);
-          this.router.navigate(['/auth/shop']);
+          this.router.navigate(['/shop']);
         },
         (err: Error) => {
           alert(err.message);
