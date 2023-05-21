@@ -23,18 +23,18 @@ export class LoginComponent implements OnInit {
 
   initializeLoginForm(){
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", Validators.required)
     })
   }
 
   onSubmit() {
     console.log('Submit button clicked');
-    console.log(this.loginForm.valid)
     this.authService.login(this.loginForm.value).subscribe({
       next: (result) => {
         console.log(result);
-        this.router.navigate(['/shop']);
+        this.authService.setToken(result.access_token!)
+        this.router.navigate(["/shop"])
       },
       error: (err: Error) => {
         alert(err.message);

@@ -12,6 +12,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, NotFoundComponent],
@@ -19,6 +21,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     CommonModule,
     CoreRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NzIconModule,
     NzButtonModule,
     NzInputModule,
@@ -27,5 +30,6 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzSelectModule,
     NzTypographyModule
   ],
+  providers: [ApiService]
 })
 export class CoreModule {}

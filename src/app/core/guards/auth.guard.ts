@@ -19,12 +19,21 @@ export class AuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if(this.authService.isLoggedIn()){
-      return true;
-    } else {
-      this.router.navigate(['/auth/login']);
-      return this.authService.isLoggedIn();
+    const requestedUrl = state.url
+    const isLoggedIn = this.authService.isLoggedIn()
+    if(isLoggedIn && requestedUrl.startsWith('auth')){
+      this.router.navigate(['/shop']);
+      return false;
     }
+
+    if (!isLoggedIn && !requestedUrl.startsWith('/auth')) {
+      // User is not authenticated and trying to access a route other than /auth
+      this.router.navigate(['/auth/login']);
+      return false; // Block access to the route
+    }
+
+    return true
 
   }
 }
+

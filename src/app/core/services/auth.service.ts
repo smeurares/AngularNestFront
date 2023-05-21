@@ -1,12 +1,16 @@
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
+import {  UserInterface } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private readonly apiService: ApiService) {}
+
+  apiUrl: string = "http://localhost:3000"
 
   setToken(token: string): void {
     localStorage.setItem('token', token);
@@ -25,11 +29,7 @@ export class AuthService {
     this.router.navigate(['/auth/login']);
   }
 
-  login({ email, password }: any): Observable<any> {
-    if (email === 'user@mail.com' && password === '123') {
-      this.setToken('attbtotcutastfukokeosoknaokenfjaeiksfanskeokniejenunia');
-      return of({ name: 'Dinu Florin', email: 'user@mail.com' });
-    }
-    return throwError(new Error('Failed to login'));
+  login(userCredentials: UserInterface): Observable<UserInterface> {
+    return this.apiService.post(`${this.apiUrl}/auth/login`, userCredentials)
   }
 }
