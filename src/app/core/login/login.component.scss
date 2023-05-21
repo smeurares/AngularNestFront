@@ -1,0 +1,26 @@
+.container {
+  padding: 1rem;
+  min-height: 30vh;
+  max-width: 40vw;
+  border: 0.7rem solid;
+  margin: 10vh auto;
+}
+
+.auth-text-input,
+.auth-password-input {
+  width: 100%;
+}
+
+.form-control-container {
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.auth-label {
+  display: inline-block;
+}
+
+.auth-chechbox-input {
+  position: relative;
+  top: 2px;
+  left: 5px;
+}
