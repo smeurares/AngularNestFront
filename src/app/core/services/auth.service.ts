@@ -32,4 +32,8 @@ export class AuthService {
   login(userCredentials: UserInterface): Observable<UserInterface> {
     return this.apiService.post(`${this.apiUrl}/auth/login`, userCredentials)
   }
+
+  register(userCredentials: UserInterface): Observable<UserInterface> {
+    return this.apiService.post(`${this.apiUrl}/users/register`, userCredentials);
+  }
 }
