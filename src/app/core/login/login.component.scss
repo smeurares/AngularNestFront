@@ -1,26 +1,47 @@
 .container {
-  padding: 1rem;
-  min-height: 30vh;
-  max-width: 40vw;
-  border: 0.7rem solid;
-  margin: 10vh auto;
-}
-
-.auth-text-input,
-.auth-password-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  height: 100vh;
   width: 100%;
 }
 
-.form-control-container {
-  margin: 0rem 0rem 1rem 0rem;
+.login-header{
+  text-align: center;
+  align-self: center;
 }
 
-.auth-label {
-  display: inline-block;
+.logo {
+  background-image: url("../../../assets/images/logo.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  margin: auto 4rem;
+  align-self: center;
 }
 
-.auth-chechbox-input {
-  position: relative;
-  top: 2px;
-  left: 5px;
+form {
+  border: 1px solid #ccc;
+  padding: 20px 40px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
 }

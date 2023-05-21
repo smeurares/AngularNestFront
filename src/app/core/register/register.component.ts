@@ -1,26 +1,33 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-  registerForm = this.fb.group({
-    name: [RegisterComponent._DEFAULT_NAME, [Validators.required]],
-    email: [
-      RegisterComponent._DEFAULT_EMAIL,
-      [Validators.required, Validators.email],
-    ],
-    password: [RegisterComponent._DEFAULT_PASSWORD, [Validators.required]],
-  });
+export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
+  options: string[] = ["admin", "buyer"];
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
-  onSubmit() {}
+  ngOnInit(): void {
+   this.initializeRegisterForm();
+  }
 
-  private static _DEFAULT_NAME: string = 'Put your name here';
-  private static _DEFAULT_EMAIL: string = 'Put your email here';
-  private static _DEFAULT_PASSWORD: string = 'password';
+  initializeRegisterForm(){
+    this.registerForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required)
+    })
+  }
+
+  onSubmit() {
+    console.log(this.registerForm.value)
+  }
+
+
 }

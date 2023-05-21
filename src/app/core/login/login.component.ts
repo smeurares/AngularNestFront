@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -9,39 +9,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginForm = this.fb.group({
-    email: [
-      LoginComponent._DEFAULT_EMAIL,
-      [Validators.required, Validators.email],
-    ],
-    password: [LoginComponent._DEFAULT_PASSWORD, [Validators.required]],
-    remember: [LoginComponent._DEFAULT_REMEMBER, []],
-  });
+  loginForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+   this.initializeLoginForm();
+   console.log('LoginForm initialized');
+  }
+
+  initializeLoginForm(){
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required)
+    })
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value).subscribe(
-        (result) => {
-          console.log(result);
-          this.router.navigate(['/shop']);
-        },
-        (err: Error) => {
-          alert(err.message);
-        }
-      );
-    }
+    console.log('Submit button clicked');
+    console.log(this.loginForm.valid)
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (result) => {
+        console.log(result);
+        this.router.navigate(['/shop']);
+      },
+      error: (err: Error) => {
+        alert(err.message);
+      }
+    });
   }
-
-  private static _DEFAULT_EMAIL: string = '';
-  private static _DEFAULT_PASSWORD: string = '';
-  private static _DEFAULT_REMEMBER: boolean = false;
 }

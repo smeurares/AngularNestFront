@@ -1,57 +1,61 @@
-<!--// Register component template  //-->
-
 <div class="container">
-  <!--// Register form group //-->
 
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <!--// Form title //-->
-    <h1 class="auth-title">Register</h1>
+  <form nz-form [formGroup]="registerForm" (ngSubmit)="onSubmit()" nzLayout="vertical">
+    <div class="logo"></div>
+    <h4 nz-typography class="login-header">Register</h4>
+    <nz-form-item>
+      <nz-form-label>Username</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="username" type="text" placeholder="Username" name="username">
+        <div *ngIf="registerForm.get('username')?.dirty && registerForm.get('username')?.hasError('required')">
+          Username is required.
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Email</nz-form-label>
+      <nz-form-control nzErrorTip="Please enter a valid email address">
+        <input nz-input formControlName="email" type="email" placeholder="Email" name="email">
+        <div *ngIf="registerForm.get('email')?.dirty && registerForm.get('email')?.errors">
+          <div *ngIf="registerForm.get('email')?.hasError('required')">
+            Email is required.
+          </div>
+          <div *ngIf="registerForm.get('email')?.hasError('email')">
+            Invalid email format.
+          </div>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
 
-    <!--// Name form control //-->
-    <div class="form-control-container">
-      <label class="auth-label" for="name">Name:</label>
-      <input
-        class="auth-input auth-text-input"
-        id="name"
-        type="text"
-        formControlName="name"
-      />
-    </div>
+    <nz-form-item>
+      <nz-form-label>Password</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="password" type="password" placeholder="Password" name="password">
+        <div *ngIf="registerForm.get('password')?.dirty && registerForm.get('password')?.hasError('required')">
+          Password is required.
+        </div>
+      </nz-form-control>
+    </nz-form-item>
 
-    <!--// Email form control //-->
-    <div class="form-control-container">
-      <label class="auth-label" for="email">Email:</label>
-      <input
-        class="auth-input auth-text-input"
-        id="email"
-        type="text"
-        formControlName="email"
-      />
-    </div>
+    <nz-form-item>
+      <nz-form-label>Select Role</nz-form-label>
+      <nz-form-control>
+        <nz-select formControlName="role">
+          <nz-option *ngFor="let option of options" [nzValue]="option" [nzLabel]="option"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
 
-    <!--// Password form control //-->
-    <div class="form-control-container">
-      <label for="password">Password:</label>
-      <input
-        class="auth-input auth-password-input"
-        id="password"
-        type="password"
-        formControlName="password"
-      />
-    </div>
 
-    <!--// Submit button //-->
-    <button
-      class="auth-button auth-submit-button"
-      type="submit"
-      [disabled]="!registerForm.valid"
-      nz-button
-      nzType="primary"
-    >
-      <i nz-icon nzType="user-add"></i>
-      Register
-    </button>
+    <nz-form-item class="buttons-container">
+      <nz-form-control>
+        <div class="button-group">
+          <button type="submit" nz-button nzType="primary" [disabled]="registerForm.invalid">Register</button>
+          <button nz-button nzType="primary" routerLink="/auth/login">Log In</button>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+
   </form>
-</div>
 
-<!--// </END> Register component template //-->
+</div>
