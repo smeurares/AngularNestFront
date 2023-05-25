@@ -13,27 +13,26 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(private readonly authService: AuthService, private readonly router: Router) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    const requestedUrl = state.url
-    const isLoggedIn = this.authService.isLoggedIn()
-    if(isLoggedIn && requestedUrl.startsWith('auth')){
+    const requestedUrl = state.url;
+    const isLoggedIn = this.authService.isLoggedIn();
+    if (isLoggedIn && requestedUrl.startsWith('auth')) {
       this.router.navigate(['/shop']);
       return false;
     }
 
     if (!isLoggedIn && !requestedUrl.startsWith('/auth')) {
-      // User is not authenticated and trying to access a route other than /auth
       this.router.navigate(['/auth/login']);
-      return false; // Block access to the route
+      return false;
     }
-
-    return true
-
+    return true;
   }
 }
-

@@ -1,0 +1,14 @@
+<nz-card [nzHoverable]="true" [ngClass]="{ 'out-of-stock': !product.isInStock }">
+  <div class="image-container">
+    <img [src]="product.imageUrl" alt="{{ product.name }}" />
+  </div>
+  <div class="details-container">
+    <h3>{{ product.name }}</h3>
+    <p class="description">{{ product.description }}</p>
+    <p class="price">Price: ${{ product.price }}</p>
+    <div class="availability" [ngClass]="{ 'in-stock': product.isInStock, 'out-of-stock': !product.isInStock }">
+      {{ product.isInStock ? 'In Stock' : 'Out of Stock' }}
+    </div>
+    <button *ngIf="product.isInStock" nz-button nzType="primary">Add to Shopping Cart</button>
+  </div>
+</nz-card>

@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
       next: (result) => {
         console.log(result);
         this.authService.setToken(result.access_token!)
+        this.authService.setName(result.name!)
+        this.authService.setEmail(result.email!)
+        this.authService.setId(result.id!)
+        this.authService.setRole(result.role!)
         this.router.navigate(["/shop"])
       },
       error: (err: Error) => {

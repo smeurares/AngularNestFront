@@ -20,12 +20,48 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+
+  setName(name: string): void {
+    localStorage.setItem('name', name)
+  }
+
+  getName(): string | null {
+    return localStorage.getItem('name');
+  }
+
+  setEmail(email: string): void {
+    localStorage.setItem('email', email)
+  }
+
+  getEmail(): string | null {
+    return localStorage.getItem('email');
+  }
+
+  setRole(role: string): void {
+    localStorage.setItem('role', role)
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  setId(id: string): void {
+    localStorage.setItem('id', id)
+  }
+
+  getId(): string | null {
+    return localStorage.getItem('id')
+  }
+
+
+
   isLoggedIn() {
     return this.getToken() !== null;
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user')
     this.router.navigate(['/auth/login']);
   }
 

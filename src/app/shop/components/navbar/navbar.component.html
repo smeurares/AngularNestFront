@@ -1,0 +1,11 @@
+<nz-page-header class="page-header">
+  <nz-page-header-title> <div class="logo"></div> </nz-page-header-title>
+  <nz-page-header-extra>
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-item><a routerLink="/shop/home">Home</a></li>
+        <li nz-menu-item><a routerLink="/shop/profile">Profile</a></li>
+        <li *ngIf="isAdmin" nz-menu-item><a routerLink="/shop/admin">Admin</a></li>
+        <li nz-menu-item (click)="logout()">Logout</li>
+      </ul>
+  </nz-page-header-extra>
+</nz-page-header>
