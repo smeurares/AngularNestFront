@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
       this.checkAdmin();
   }
   checkAdmin(){
-    if(this.authService.getRole() === 'admin'){
+    if(this.authService.getLocalStorageItem('role') === 'admin'){
       this.isAdmin = true;
     }
   }

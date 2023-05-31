@@ -23,7 +23,7 @@ export class AuthGuard {
     state: RouterStateSnapshot
   ): boolean {
     const requestedUrl = state.url;
-    const isLoggedIn = this.authService.isLoggedIn();
+    const isLoggedIn = this.authService.getLocalStorageItem('access_token') !== null;
     if (isLoggedIn && requestedUrl.startsWith('auth')) {
       this.router.navigate(['/shop']);
       return false;

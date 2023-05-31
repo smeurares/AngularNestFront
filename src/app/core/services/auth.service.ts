@@ -1,75 +1,49 @@
-import { Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
-import {  UserInterface } from '../interfaces/user.interface';
+import { UserInterface } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router, private readonly apiService: ApiService) {}
+  private readonly user$: BehaviorSubject<UserInterface> =
+    new BehaviorSubject<UserInterface>({} as UserInterface);
+  constructor(
+    private router: Router,
+    private readonly apiService: ApiService
+  ) {}
 
-  apiUrl: string = "http://localhost:3000"
+  apiUrl: string = 'http://localhost:3000';
 
-  setToken(token: string): void {
-    localStorage.setItem('token', token);
+  getLocalStorageItem(item: string): string | null {
+    const storageString = localStorage.getItem('user');
+    if (storageString === null) {
+      return null;
+    }
+    const storageObject = JSON.parse(storageString);
+    return storageObject[item];
   }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-
-  setName(name: string): void {
-    localStorage.setItem('name', name)
-  }
-
-  getName(): string | null {
-    return localStorage.getItem('name');
-  }
-
-  setEmail(email: string): void {
-    localStorage.setItem('email', email)
-  }
-
-  getEmail(): string | null {
-    return localStorage.getItem('email');
-  }
-
-  setRole(role: string): void {
-    localStorage.setItem('role', role)
-  }
-
-  getRole(): string | null {
-    return localStorage.getItem('role');
-  }
-
-  setId(id: string): void {
-    localStorage.setItem('id', id)
-  }
-
-  getId(): string | null {
-    return localStorage.getItem('id')
-  }
-
-
 
   isLoggedIn() {
-    return this.getToken() !== null;
+    return localStorage.getItem('user') !== null;
   }
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
     this.router.navigate(['/auth/login']);
   }
 
   login(userCredentials: UserInterface): Observable<UserInterface> {
-    return this.apiService.post(`${this.apiUrl}/auth/login`, userCredentials)
+    return this.apiService.post(`${this.apiUrl}/auth/login`, userCredentials);
   }
 
   register(userCredentials: UserInterface): Observable<UserInterface> {
-    return this.apiService.post(`${this.apiUrl}/users/register`, userCredentials);
+    return this.apiService.post(
+      `${this.apiUrl}/users/register`,
+      userCredentials
+    );
   }
 }

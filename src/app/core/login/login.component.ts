@@ -33,11 +33,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe({
       next: (result) => {
         console.log(result);
-        this.authService.setToken(result.access_token!)
-        this.authService.setName(result.name!)
-        this.authService.setEmail(result.email!)
-        this.authService.setId(result.id!)
-        this.authService.setRole(result.role!)
+        localStorage.setItem('user', JSON.stringify(result))
         this.router.navigate(["/shop"])
       },
       error: (err: Error) => {
