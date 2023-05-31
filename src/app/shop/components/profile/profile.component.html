@@ -1,1 +1,10 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="profile-container" *ngIf="user">
+    <h2>{{user.name?.toUpperCase() }} Profile Page</h2>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Role:</strong> {{ user.role }}</p>
+    <p><strong>Bought Products:</strong> {{ user.boughtProducts?.length }}</p>
+  </div>
+</div>
+

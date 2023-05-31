@@ -1,0 +1,28 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  .profile-container {
+    max-width: 50%;
+    max-height: 50vh;
+    padding: 4rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    background-color: #fff;
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    p {
+      margin-bottom: 8px;
+
+      strong {
+        font-weight: bold;
+      }
+    }
+  }
+
+}

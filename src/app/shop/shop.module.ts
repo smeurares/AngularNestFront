@@ -17,6 +17,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './adminComponents/admin/admin.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [NavbarComponent, MainComponent, CarouselHeaderComponent, ProductsContainerComponent, ProductComponent, HomeComponent, ProfileComponent, AdminComponent],
@@ -30,7 +31,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzSpaceModule,
     NzCarouselModule,
     NzGridModule,
-    NzCardModule
+    NzCardModule,
+    NzMessageModule
   ],
 })
 export class ShopModule {}
