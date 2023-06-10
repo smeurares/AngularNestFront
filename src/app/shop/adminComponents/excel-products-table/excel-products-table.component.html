@@ -1,0 +1,26 @@
+<div>
+  <nz-table
+    #basicTable
+    [nzData]="products"
+    nzShowPagination
+    [nzPageSize]="5"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+  >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of basicTable.data">
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.imageUrl }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

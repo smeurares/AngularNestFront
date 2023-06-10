@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './adminComponents/admin/admin.component';
 import { AdminGuard } from './guards/admin.guard';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         canActivate: [AdminGuard]
+      },
+      {
+        path: 'shopping-cart',
+        component: ShoppingCartComponent
       }
 
     ],

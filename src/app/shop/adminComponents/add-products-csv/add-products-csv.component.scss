@@ -1,0 +1,16 @@
+.add-product-csv {
+  display: flex;
+  justify-content: center;
+
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  button {
+    margin: 1rem auto;
+  }
+}

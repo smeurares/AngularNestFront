@@ -7,11 +7,11 @@ import { AuthService } from 'src/app/core/services/auth.service';
   providedIn: 'root'
 })
 export class AdminGuard {
-  constructor(private readonly router: Router){}
+  constructor(private readonly router: Router, private readonly authService: AuthService){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(localStorage.getItem('role') === 'admin'){
+    if(this.authService.getLocalStorageItem('role') === 'admin'){
       return true;
     } else {
       return this.router.parseUrl('/shop');

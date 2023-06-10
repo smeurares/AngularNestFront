@@ -18,13 +18,30 @@ import { AdminComponent } from './adminComponents/admin/admin.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { AddProductFormComponent } from './adminComponents/add-product-form/add-product-form.component';
+import { AddProductsCSVComponent } from './adminComponents/add-products-csv/add-products-csv.component';
+import { AdminAnalitycsComponent } from './adminComponents/admin-analitycs/admin-analitycs.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { ExcelProductsTableComponent } from './adminComponents/excel-products-table/excel-products-table.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
+const CHARTS_MODULE = NgxEchartsModule.forRoot({
+  echarts: () => import('echarts')
+})
 
 @NgModule({
-  declarations: [NavbarComponent, MainComponent, CarouselHeaderComponent, ProductsContainerComponent, ProductComponent, HomeComponent, ProfileComponent, AdminComponent],
+  declarations: [NavbarComponent, MainComponent, CarouselHeaderComponent, ProductsContainerComponent, ProductComponent, HomeComponent, ProfileComponent, AdminComponent, AddProductFormComponent, AddProductsCSVComponent, AdminAnalitycsComponent, ExcelProductsTableComponent, ShoppingCartComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
     CoreModule,
+    FormsModule,
     NzPageHeaderModule,
     NzMenuModule,
     NzLayoutModule,
@@ -32,7 +49,15 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzCarouselModule,
     NzGridModule,
     NzCardModule,
-    NzMessageModule
+    NzMessageModule,
+    ReactiveFormsModule,
+    NzButtonModule,
+    NzFormModule,
+    NzInputModule,
+    NzUploadModule,
+    NzTableModule,
+    CHARTS_MODULE
+
   ],
 })
 export class ShopModule {}

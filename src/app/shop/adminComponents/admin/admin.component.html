@@ -1,1 +1,15 @@
-<p>admin works!</p>
+<nz-page-header class="site-page-header">
+  <nz-page-header-extra>
+    <nz-space>
+      <button *nzSpaceItem nz-button (click) = "setButtonState('addOne')">Add product</button>
+      <button *nzSpaceItem nz-button (click) = "setButtonState('addMultiple')">Add products from CSV</button>
+      <button *nzSpaceItem nz-button (click) = "setButtonState('analitycs')">Analitycs</button>
+    </nz-space>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<div class="forms-cotainers">
+  <app-add-product-form *ngIf="buttonsState === 'addOne'"></app-add-product-form>
+  <app-add-products-csv *ngIf="buttonsState === 'addMultiple'"></app-add-products-csv>
+  <app-admin-analitycs *ngIf="buttonsState === 'analitycs'"></app-admin-analitycs>
+</div>

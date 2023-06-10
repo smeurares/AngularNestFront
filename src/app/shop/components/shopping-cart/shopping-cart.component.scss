@@ -1,0 +1,33 @@
+.cart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.empty-cart {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cart-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.discount-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+nz-input-group {
+  margin-right: 10px;
+}

@@ -5,6 +5,7 @@
         <li nz-menu-item><a routerLink="/shop/home">Home</a></li>
         <li nz-menu-item><a routerLink="/shop/profile">Profile</a></li>
         <li *ngIf="isAdmin" nz-menu-item><a routerLink="/shop/admin">Admin</a></li>
+        <li nz-menu-item><a routerLink="/shop/shopping-cart">Shopping cart</a></li>
         <li nz-menu-item (click)="logout()">Logout</li>
       </ul>
   </nz-page-header-extra>

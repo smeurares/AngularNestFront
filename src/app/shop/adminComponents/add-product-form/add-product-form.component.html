@@ -1,0 +1,52 @@
+<div class="form-container">
+  <div class="form">
+    <form nzForm [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+      <nz-form-item>
+        <nz-form-label>Name</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Description</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input formControlName="description"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Price</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="price" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Image URL or Upload</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="imageUrl" type="text" />
+          <input type="file" (change)="onFileChange($event)" accept="image/*" />
+          <br />
+          <img
+            [src]="imageUrlPreview"
+            alt="Image Preview"
+            *ngIf="imageUrlPreview"
+          />
+          <button
+            nz-button
+            nzType="default"
+            nzSize="small"
+            (click)="clearImage()"
+          >
+            Clear Image
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" nzSize="large" type="submit" [disabled]="!addProductForm.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

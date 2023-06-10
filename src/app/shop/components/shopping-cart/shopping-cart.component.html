@@ -1,0 +1,24 @@
+<div class="cart-container">
+  <h1>Shopping Cart</h1>
+
+  <div *ngIf="cartItems.length === 0" class="empty-cart">Your cart is empty</div>
+
+  <div *ngFor="let item of cartItems" class="cart-item">
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.description }}</p>
+    <p>Price: {{ item.price | currency }}</p>
+  </div>
+
+  <div class="total-price">
+    Total: {{ getTotalPrice() | currency }}
+  </div>
+
+  <div class="discount-container">
+    <form [formGroup]="discountForm">
+      <nz-input-group nzAddOnBefore="Discount code">
+        <input nz-input formControlName="discountCode" placeholder="Discount code">
+      </nz-input-group>
+      <button nz-button nzType="primary" (click)="applyDiscount()" [disabled]="discountForm.invalid || discountApplied">Apply</button>
+    </form>
+  </div>
+</div>
