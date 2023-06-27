@@ -1,18 +1,35 @@
 <div class="container">
-
-  <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()" nzLayout="vertical">
+  <form
+    nz-form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    nzLayout="vertical"
+  >
     <div class="logo"></div>
     <h4 nz-typography class="login-header">Login</h4>
     <nz-form-item>
       <nz-form-label>Email</nz-form-label>
       <nz-form-control nzErrorTip="Please enter a valid email address">
-        <input nz-input formControlName="email" type="email" placeholder="Email" name="email">
-        <div *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.errors">
+        <input
+          nz-input
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          name="email"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.dirty && loginForm.get('email')?.errors
+          "
+        >
           <div *ngIf="loginForm.get('email')?.hasError('required')">
-            Email is required.
+            Email is required
           </div>
-          <div *ngIf="loginForm.get('email')?.hasError('email')">
-            Invalid email format.
+          <div
+            *ngIf="loginForm.get('email')?.hasError('invalidUniversityEmail')"
+          >
+            Email should have this format:
+            first-name.last-name@[student.]unitbv.ro
           </div>
         </div>
       </nz-form-control>
@@ -20,9 +37,20 @@
     <nz-form-item>
       <nz-form-label>Password</nz-form-label>
       <nz-form-control>
-        <input nz-input formControlName="password" type="password" placeholder="Password" name="password">
-        <div *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('required')">
-          Password is required.
+        <input
+          nz-input
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          name="password"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.dirty &&
+            loginForm.get('password')?.hasError('required')
+          "
+        >
+          Password is required
         </div>
       </nz-form-control>
     </nz-form-item>
@@ -30,12 +58,20 @@
     <nz-form-item class="buttons-container">
       <nz-form-control>
         <div class="button-group">
-          <button type="submit" nz-button nzType="primary" [disabled]="loginForm.invalid" class="login">Login</button>
-          <button nz-button nzType="primary" routerLink="/auth/register">Register</button>
+          <button
+            type="submit"
+            nz-button
+            nzType="primary"
+            [disabled]="loginForm.invalid"
+            class="login"
+          >
+            Login
+          </button>
+          <button nz-button nzType="primary" routerLink="/auth/register">
+            Register
+          </button>
         </div>
       </nz-form-control>
     </nz-form-item>
-
   </form>
-
 </div>

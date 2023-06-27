@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ValidateUniversityEmail } from 'src/shared/university-email.validator';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,10 @@ export class RegisterComponent implements OnInit {
   initializeRegisterForm() {
     this.registerForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [
+        Validators.required,
+        ValidateUniversityEmail,
+      ]),
       password: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),
     });
@@ -48,7 +52,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(payload).subscribe({
       next: (result) => {
         console.log(result);
-        this.router.navigate(["/auth/login"])
+        this.router.navigate(['/auth/login']);
       },
       error: (err: Error) => {
         alert(err.message);

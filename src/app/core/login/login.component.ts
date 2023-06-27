@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ValidateUniversityEmail } from 'src/shared/university-email.validator';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +23,18 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   this.initializeLoginForm();
-   console.log('LoginForm initialized');
+    this.initializeLoginForm();
+    console.log('LoginForm initialized');
   }
 
-  initializeLoginForm(){
+  initializeLoginForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl("", Validators.required)
-    })
+      email: new FormControl('', [
+        Validators.required,
+        ValidateUniversityEmail,
+      ]),
+      password: new FormControl('', Validators.required),
+    });
   }
 
   onSubmit() {
@@ -33,12 +42,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe({
       next: (result) => {
         console.log(result);
-        localStorage.setItem('user', JSON.stringify(result))
-        this.router.navigate(["/shop"])
+        localStorage.setItem('user', JSON.stringify(result));
+        this.router.navigate(['/shop']);
       },
       error: (err: Error) => {
         alert(err.message);
-      }
+      },
     });
   }
 }
