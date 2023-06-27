@@ -30,6 +30,9 @@ import { ExcelProductsTableComponent } from './adminComponents/excel-products-ta
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 const CHARTS_MODULE = NgxEchartsModule.forRoot({
   echarts: () => import('echarts')
@@ -56,8 +59,10 @@ const CHARTS_MODULE = NgxEchartsModule.forRoot({
     NzInputModule,
     NzUploadModule,
     NzTableModule,
-    CHARTS_MODULE
-
+    CHARTS_MODULE,
+    NzNotificationModule,
+    NzBadgeModule,
+    NzSpinModule
   ],
 })
 export class ShopModule {}

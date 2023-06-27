@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductsService } from '../../services/products.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-add-product-form',
@@ -9,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductFormComponent implements OnInit {
   addProductForm!: FormGroup;
   imageUrlPreview: string | ArrayBuffer | null = null;
+
+  constructor(private readonly productsService: ProductsService, private notification: NzNotificationService){}
 
   ngOnInit(): void {
    this.initializeForm();
@@ -23,8 +27,27 @@ export class AddProductFormComponent implements OnInit {
     })
   }
 
+  createNotification(title: string){
+    this.notification.create(
+      'success',
+      `${title} was suscesfully added to the database.`,
+      ''
+    )
+  }
+
   onSubmit(){
-    console.log(this.addProductForm.value)
+    const formProduct = {
+      ...this.addProductForm.value,
+      isInStock: true
+    }
+    console.log(formProduct)
+    this.productsService.addProduct(formProduct).subscribe((response) => {
+      if(response.name){
+        this.createNotification(response.name)
+        this.addProductForm.reset()
+      }
+    })
+
   }
 
   onFileChange(event: Event) {

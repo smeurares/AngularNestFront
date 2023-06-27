@@ -17,7 +17,7 @@
     *ngIf="JSONData.length > 0"
     [products]="JSONData"
   ></app-excel-products-table>
-  <button nz-button nzType="primary" *ngIf="JSONData.length > 0">
+  <button nz-button nzType="primary" *ngIf="JSONData.length > 0" (click)="addProductsToDB()">
     <span nz-icon nzType="primary"></span>
     Add to server
   </button>

@@ -9,6 +9,6 @@
     <div class="availability" [ngClass]="{ 'in-stock': product.isInStock, 'out-of-stock': !product.isInStock }">
       {{ product.isInStock ? 'In Stock' : 'Out of Stock' }}
     </div>
-    <button [disabled]="!product.isInStock" nz-button nzType="primary">Add to Shopping Cart</button>
+    <button [disabled]="!product.isInStock" nz-button nzType="primary" (click)="addProductToCart()">Add to Shopping Cart</button>
   </div>
 </nz-card>

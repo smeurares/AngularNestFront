@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,16 +14,31 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice!: number;
   discountForm!: FormGroup;
   discountApplied: boolean = false;
+  loading: boolean = true;
 
-  products: Product[] = [
-    { name: 'Product 1', description: 'Description for Product 1', price: 10 },
-    { name: 'Product 2', description: 'Description for Product 2', price: 15 },
-    { name: 'Product 3', description: 'Description for Product 3', price: 20 },
-  ];
+  constructor(
+    private readonly shoppingCartService: ShoppingCartService,
+    private readonly authService: AuthService
+  ) {}
 
-  cartItems: Product[] = [...this.products];
+  products: Product[] = [];
+
+  getShoppingCartProducts() {
+    const userId = this.authService.getLocalStorageItem('id')!;
+    this.shoppingCartService.fetchShopingCart(userId);
+    this.shoppingCartService.getShoppingCart().subscribe((cartProducts) => {
+      if(cartProducts.products){
+        this.products = cartProducts.products;
+      } else {
+        this.products = []
+      }
+      console.log(cartProducts)
+      this.loading = false;
+    });
+  }
 
   ngOnInit(): void {
+    this.getShoppingCartProducts();
     this.initializeDiscountForm();
   }
 
@@ -32,7 +49,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getTotalPrice(): number {
-    let totalPrice = this.cartItems.reduce((total, item) => total + item.price, 0);
+    let totalPrice = this.products.reduce(
+      (total, item) => total + item.price,
+      0
+    );
     if (this.discountApplied) {
       totalPrice -= totalPrice * 0.1; // Apply 10% discount
     }

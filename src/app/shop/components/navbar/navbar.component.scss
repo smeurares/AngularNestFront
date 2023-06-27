@@ -1,15 +1,26 @@
-.logo {
-  background-image: url("../../../../assets/images/logo.jpg");
-  background-color: #cccccc;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 120px;
-  height: 31px;
-  margin: auto 20px;
-  float: left;
-}
-
 .page-header{
   padding: 12px 2px 0 2px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  .logo {
+    background-image: url("../../../../assets/images/logo.jpg");
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 120px;
+    height: 31px;
+    margin: auto 20px;
+    margin-right: 10rem;
+    float: left;
+  }
+
+  .page-menu-list{
+    margin-left: 10rem;
+  }
+
 }
+
+
+

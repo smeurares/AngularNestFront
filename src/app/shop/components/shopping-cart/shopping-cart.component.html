@@ -1,9 +1,12 @@
 <div class="cart-container">
   <h1>Shopping Cart</h1>
 
-  <div *ngIf="cartItems.length === 0" class="empty-cart">Your cart is empty</div>
+  <div *ngIf="products.length === 0 && !loading" class="empty-cart">Your cart is empty</div>
+  <div *ngIf="loading">
+    <nz-spin nzSimple></nz-spin>
+  </div>
 
-  <div *ngFor="let item of cartItems" class="cart-item">
+  <div *ngFor="let item of products" class="cart-item">
     <h3>{{ item.name }}</h3>
     <p>{{ item.description }}</p>
     <p>Price: {{ item.price | currency }}</p>
