@@ -1,47 +1,71 @@
-.container {
+.main-container {
+  background: #14213d;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  align-content: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
-.login-header{
-  text-align: center;
-  align-self: center;
+.form {
+  background: #e5e5e5;
+  padding: 2vh 2vw;
+  width: 50%;
+  height: fit-content;
+  min-height: 44vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #14213d;
+  font-size: 30px;
+  font-weight: 900;
 }
 
 .logo {
-  background-image: url("../../../assets/images/logo.jpg");
-  background-color: #cccccc;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url("../../../assets/images/logo_FCA311_14213D_resized.png");
   background-size: cover;
-  width: 150px;
-  height: 150px;
-  margin: auto 4rem;
-  align-self: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  width: 20%;
 }
 
-form {
-  border: 1px solid #ccc;
-  padding: 20px 40px;
-  width: 50%;
-  border-radius: 5px;
-  background-color: #fff;
+.form-item {
+  width: 80%;
+  min-height: 10vh;
+  height: max-content;
+}
+.ant-form-item {
+  margin: 0;
+}
+
+.footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.buttons-container {
+.buttons-group {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.button-group {
-  display: flex;
-  gap: 10px;
+.button {
+  width: 20%;
 }
