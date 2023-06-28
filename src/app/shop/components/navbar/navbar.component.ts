@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,9 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+
+  productsCounter!: number;
+  constructor(private readonly authService: AuthService, private readonly shoppingCartService: ShoppingCartService) {}
 
   logout() {
     this.authService.logout();
@@ -16,10 +19,21 @@ export class NavbarComponent implements OnInit {
   isAdmin: boolean = false;
   ngOnInit(): void {
       this.checkAdmin();
+      this.updateShoppingCartCounter()
+
+  }
+
+  updateShoppingCartCounter(){
+    this.shoppingCartService.fetchShopingCart(this.authService.getLocalStorageItem('id')!);
+    this.shoppingCartService.getShoppingCart().subscribe((shoppingCart) => {
+      this.productsCounter = shoppingCart.products.length;
+    });
   }
   checkAdmin(){
     if(this.authService.getLocalStorageItem('role') === 'admin'){
       this.isAdmin = true;
     }
   }
+
+
 }

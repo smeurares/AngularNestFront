@@ -10,6 +10,7 @@
     <h3>{{ item.name }}</h3>
     <p>{{ item.description }}</p>
     <p>Price: {{ item.price | currency }}</p>
+    <button nz-button nzType="primary" nzDanger nzSize="small" (click)="removeProduct(item._id!)">Remove</button>
   </div>
 
   <div class="total-price">

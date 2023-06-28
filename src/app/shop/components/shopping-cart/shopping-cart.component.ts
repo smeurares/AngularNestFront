@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/product';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +19,8 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(
     private readonly shoppingCartService: ShoppingCartService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly notification: NzNotificationService
   ) {}
 
   products: Product[] = [];
@@ -27,12 +29,11 @@ export class ShoppingCartComponent implements OnInit {
     const userId = this.authService.getLocalStorageItem('id')!;
     this.shoppingCartService.fetchShopingCart(userId);
     this.shoppingCartService.getShoppingCart().subscribe((cartProducts) => {
-      if(cartProducts.products){
+      if (cartProducts.products) {
         this.products = cartProducts.products;
       } else {
-        this.products = []
+        this.products = [];
       }
-      console.log(cartProducts)
       this.loading = false;
     });
   }
@@ -69,5 +70,18 @@ export class ShoppingCartComponent implements OnInit {
         alert('Invalid discount code!');
       }
     }
+  }
+
+  removeProduct(productId: string) {
+    const userId = this.authService.getLocalStorageItem('id')!;
+    this.shoppingCartService
+      .removeProduct(userId, productId)
+      .subscribe(() =>
+        this.notification.create(
+          'success',
+          `Product was suscesfully removed.`,
+          ''
+        )
+      );
   }
 }
