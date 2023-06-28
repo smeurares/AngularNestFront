@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CarouselItem } from '../../interfaces/carousel-item';
 
 @Component({
   selector: 'app-carousel-header',
@@ -7,7 +6,7 @@ import { CarouselItem } from '../../interfaces/carousel-item';
   styleUrls: ['./carousel-header.component.scss'],
 })
 export class CarouselHeaderComponent {
-  items: CarouselItem[] = [
+  items: any = [
     {
       index: 1,
       title: 'First item',
