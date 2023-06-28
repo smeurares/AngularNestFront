@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CarouselItem } from '../../interfaces/carousel-item';
 
 @Component({
   selector: 'app-carousel-item',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./carousel-item.component.scss'],
 })
 export class CarouselItemComponent {
-  @Input() item!: any;
+  @Input() item!: CarouselItem;
 }

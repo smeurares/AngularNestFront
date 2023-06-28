@@ -1,15 +1,24 @@
-.title{
-  margin-top: 2rem;
-  text-align: center;
-  max-width: 100%;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0rem 3rem 0rem;
-  max-width: 90%;
+.main-container {
+  background: #fca311;
+  padding-bottom: 10vh;
 }
 
-.product-row{
-  max-width: 90%;
+.title-container {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .title {
+    text-align: center;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 900;
+  }
+}
+
+.product-rows-container {
+  background: #e5e5e5;
+  border-radius: 5px;
+  margin: 0vh 10vw;
+  padding: 2vh 2vw 0vh;
 }
