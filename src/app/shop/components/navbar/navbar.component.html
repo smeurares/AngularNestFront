@@ -3,14 +3,18 @@
     <div class="logo"></div>
   </nz-page-header-title>
   <nz-page-header-extra>
-    <ul nz-menu nzMode="horizontal" class="menu-list">
+    <ul nz-menu nzMode="horizontal" nzTheme="light" class="menu-list">
       <li nz-menu-item><a routerLink="/shop/home">Home</a></li>
       <li nz-menu-item><a routerLink="/shop/profile">Profile</a></li>
       <li *ngIf="isAdmin" nz-menu-item>
         <a routerLink="/shop/admin">Admin</a>
       </li>
       <li nz-menu-item>
-        <nz-badge [nzCount]="productsCounter" [nzOffset]="[6, 0]" nzSize="small">
+        <nz-badge
+          [nzCount]="productsCounter"
+          [nzOffset]="[6, 0]"
+          nzSize="small"
+        >
           <a routerLink="/shop/shopping-cart">Shopping cart</a>
         </nz-badge>
       </li>
