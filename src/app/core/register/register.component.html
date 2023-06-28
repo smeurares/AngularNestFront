@@ -1,17 +1,13 @@
-<div class="main-container">
+<div class="container">
   <form
-    class="form"
     nz-form
     [formGroup]="registerForm"
     (ngSubmit)="onSubmit()"
     nzLayout="vertical"
   >
-    <div class="form-item header">
-      <div class="title">Register</div>
-      <div class="logo"></div>
-    </div>
-
-    <nz-form-item class="form-item">
+    <div class="logo"></div>
+    <h4 nz-typography class="login-header">Register</h4>
+    <nz-form-item>
       <nz-form-label>Username</nz-form-label>
       <nz-form-control>
         <input
@@ -31,8 +27,7 @@
         </div>
       </nz-form-control>
     </nz-form-item>
-
-    <nz-form-item class="form-item">
+    <nz-form-item>
       <nz-form-label>Email</nz-form-label>
       <nz-form-control nzErrorTip="Please enter a valid email address">
         <input
@@ -63,7 +58,7 @@
       </nz-form-control>
     </nz-form-item>
 
-    <nz-form-item class="form-item">
+    <nz-form-item>
       <nz-form-label>Password</nz-form-label>
       <nz-form-control>
         <input
@@ -84,7 +79,7 @@
       </nz-form-control>
     </nz-form-item>
 
-    <nz-form-item class="form-item">
+    <nz-form-item>
       <nz-form-label>Select Role</nz-form-label>
       <nz-form-control>
         <nz-select formControlName="role">
@@ -97,11 +92,10 @@
       </nz-form-control>
     </nz-form-item>
 
-    <nz-form-item class="form-item">
-      <nz-form-control class="footer">
-        <div class="buttons-group">
+    <nz-form-item class="buttons-container">
+      <nz-form-control>
+        <div class="button-group">
           <button
-            class="button"
             type="submit"
             nz-button
             nzType="primary"
@@ -109,12 +103,7 @@
           >
             Register
           </button>
-          <button
-            class="button"
-            nz-button
-            nzType="primary"
-            routerLink="/auth/login"
-          >
+          <button nz-button nzType="primary" routerLink="/auth/login">
             Log In
           </button>
         </div>

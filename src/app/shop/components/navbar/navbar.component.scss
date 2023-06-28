@@ -1,27 +1,26 @@
-.page-header {
-  height: 10vh;
-
+.page-header{
+  padding: 12px 2px 0 2px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
   .logo {
-    position: relative;
-    top: 5px;
-    background-image: url("../../../../assets/images/logo_without_text.png");
-    background-size: cover;
+    background-image: url("../../../../assets/images/logo.jpg");
+    background-color: #cccccc;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 150px;
-    height: 40px;
+    background-size: cover;
+    width: 120px;
+    height: 31px;
+    margin: auto 20px;
+    margin-right: 10rem;
+    float: left;
   }
 
-  ul {
-    position: relative;
-    top: 5px;
-    background-color: transparent;
+  .page-menu-list{
+    margin-left: 10rem;
   }
 
-  ul,
-  a {
-    font-size: 16px;
-    font-weight: 900;
-  }
 }
+
+
+

@@ -1,25 +1,26 @@
-nz-card {
-  margin-bottom: 2vh;
+nz-card{
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-radius: 5px;
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .image-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  img {
+  height: 40%;
+  img{
+    height: 30vh;
     width: 100%;
-    border-radius: 5px;
   }
 }
 
 .details-container {
+  padding: 16px;
+  height: 60%;
+
   h3 {
-    text-align: center;
+    margin: 0;
     font-size: 18px;
     font-weight: bold;
   }
@@ -27,7 +28,6 @@ nz-card {
   .description {
     margin-top: 8px;
     font-size: 14px;
-    height: 5vh;
   }
 
   .price {
@@ -37,12 +37,11 @@ nz-card {
   }
 
   .availability {
-    text-align: center;
     margin-top: 8px;
     padding: 4px 8px;
     font-size: 14px;
     color: #fff;
-    border-radius: 2px;
+    border-radius: 4px;
     &.in-stock {
       background-color: green;
     }
@@ -51,8 +50,7 @@ nz-card {
     }
   }
 
-  .button {
-    width: 100%;
+  button {
     margin-top: 8px;
   }
 }

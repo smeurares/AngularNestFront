@@ -33,14 +33,13 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { CarouselItemComponent } from './components/carousel-item/carousel-item.component';
 
 const CHARTS_MODULE = NgxEchartsModule.forRoot({
   echarts: () => import('echarts')
 })
 
 @NgModule({
-  declarations: [NavbarComponent, MainComponent, CarouselHeaderComponent,CarouselItemComponent, ProductsContainerComponent, ProductComponent, HomeComponent, ProfileComponent, AdminComponent, AddProductFormComponent, AddProductsCSVComponent, AdminAnalitycsComponent, ExcelProductsTableComponent, ShoppingCartComponent],
+  declarations: [NavbarComponent, MainComponent, CarouselHeaderComponent, ProductsContainerComponent, ProductComponent, HomeComponent, ProfileComponent, AdminComponent, AddProductFormComponent, AddProductsCSVComponent, AdminAnalitycsComponent, ExcelProductsTableComponent, ShoppingCartComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,
