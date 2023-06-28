@@ -12,7 +12,7 @@ export class AddProductFormComponent implements OnInit {
   addProductForm!: FormGroup;
   imageUrlPreview: string | ArrayBuffer | null = null;
 
-  constructor(private readonly productsService: ProductsService, private notification: NzNotificationService){}
+  constructor(private readonly productsService: ProductsService, private readonly notification: NzNotificationService){}
 
   ngOnInit(): void {
    this.initializeForm();

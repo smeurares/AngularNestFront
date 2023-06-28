@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ShoppingCart } from '../interfaces/shopping-cart';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { use } from 'echarts';
 
 @Injectable({
@@ -13,6 +13,8 @@ export class ShoppingCartService {
   private readonly shoppingCart$: BehaviorSubject<ShoppingCart> = new BehaviorSubject<
     ShoppingCart
   >({} as ShoppingCart);
+
+  private readonly shoppingCartCounter$: BehaviorSubject<Number> = new BehaviorSubject<Number>(0)
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -28,6 +30,16 @@ export class ShoppingCartService {
 
   addToShoppingCart(userId: string, productId: string){
     return this.httpClient.post(`${this.SHOPPING_CART_URL}/${userId}/add/${productId}`, {userId: userId, productId: productId})
+    .pipe(
+      tap(() => this.fetchShopingCart(userId))
+    );
+  }
+
+  removeProduct(userId: string, productId: string){
+    return this.httpClient.delete(`${this.SHOPPING_CART_URL}/${userId}/remove/${productId}`)
+    .pipe(
+      tap(() => this.fetchShopingCart(userId))
+    );
   }
 
 }
