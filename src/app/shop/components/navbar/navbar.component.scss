@@ -1,26 +1,15 @@
-.page-header{
-  padding: 12px 2px 0 2px;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
+.page-header {
   .logo {
-    background-image: url("../../../../assets/images/logo.jpg");
-    background-color: #cccccc;
+    background-image: url("../../../../assets/images/logo_FCA311_14213D_resized.png");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     width: 120px;
-    height: 31px;
-    margin: auto 20px;
-    margin-right: 10rem;
-    float: left;
+    height: 38px;
   }
 
-  .page-menu-list{
-    margin-left: 10rem;
+  .menu-list {
+    background-color: transparent;
   }
-
 }
-
-
-

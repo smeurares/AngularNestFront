@@ -1,15 +1,14 @@
-.title{
-  margin-top: 2rem;
-  text-align: center;
-  max-width: 100%;
-}
-.container {
+.title-container {
+  height: 10vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 3rem 0rem 3rem 0rem;
-  max-width: 90%;
+  .title {
+    text-align: center;
+    color: #000000;
+  }
 }
 
-.product-row{
-  max-width: 90%;
+.product-rows-container {
+  padding: 0vh 2vw;
 }
